@@ -1,0 +1,55 @@
+@model IEnumerable<NewsAnalyzer.Models.News>
+
+@{
+	ViewData["Title"] = "Index";
+}
+
+<h2>News List</h2>
+
+<p>
+	<a asp-action="GetUpdates" class="btn btn-primary">Get Updates</a>
+</p>
+
+@foreach (var item in Model)
+{
+		string color;
+		if (item.Sentiment < 40)
+		{
+			color = "panel panel-danger";
+		}
+		else if (item.Sentiment >= 40 && item.Sentiment <= 60)
+		{
+			color = "panel panel-warning";
+		}
+		else
+		{
+			color = "panel panel-success";
+		}
+	
+		<div class="@color" style="border-left:none;border-right:none; border-bottom:none;">
+			<div class="panel-heading">
+				<span class="panel-title">@item.Portal.Name</span>
+				<span style="font-size:12px">@item.PublishDate</span>
+				<span class="badge" style="font-size:20px">@item.Sentiment</span>
+			</div>
+			<div class="panel-body">
+				<a class="lead" href=@item.Link><strong>@item.Title</strong></a>
+			</div>
+			@if (User.Identity.IsAuthenticated)
+			{
+				<div class="panel-body">
+					<a class="text-muted" asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+					<a class="text-muted" asp-action="Details" asp-route-id="@item.Id">Details</a> |
+					<a class="text-muted" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+				</div>
+			}
+		</div>
+	
+}
+<ul class="pagination pagination-lg">
+	<li class="disabled"><a href="#">&laquo;</a></li>
+	<li class="active"><a href="#">1</a></li>
+	<li><a href="#">2</a></li>
+	<li><a href="#">3</a></li>
+	<li><a href="#">&raquo;</a></li>
+</ul>

@@ -1,0 +1,7 @@
+c:\users\gxsha\onedrive\documents\visual studio 2017\Projects\RSSReader\RSSReader\bin\Debug\netcoreapp1.1\RSSReader.deps.json
+c:\users\gxsha\onedrive\documents\visual studio 2017\Projects\RSSReader\RSSReader\bin\Debug\netcoreapp1.1\RSSReader.dll
+c:\users\gxsha\onedrive\documents\visual studio 2017\Projects\RSSReader\RSSReader\bin\Debug\netcoreapp1.1\RSSReader.pdb
+c:\users\gxsha\onedrive\documents\visual studio 2017\Projects\RSSReader\RSSReader\obj\Debug\netcoreapp1.1\RSSReader.csprojResolveAssemblyReference.cache
+c:\users\gxsha\onedrive\documents\visual studio 2017\Projects\RSSReader\RSSReader\obj\Debug\netcoreapp1.1\RSSReader.AssemblyInfo.cs
+c:\users\gxsha\onedrive\documents\visual studio 2017\Projects\RSSReader\RSSReader\obj\Debug\netcoreapp1.1\RSSReader.dll
+c:\users\gxsha\onedrive\documents\visual studio 2017\Projects\RSSReader\RSSReader\obj\Debug\netcoreapp1.1\RSSReader.pdb
