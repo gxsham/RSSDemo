@@ -30,6 +30,11 @@ namespace NewsAnalyzer.Controllers
             return View(await applicationDbContext.ToListAsync());
         }
 
+		[AllowAnonymous]
+		public ActionResult LandingPage()
+		{
+			return View();
+		}
         // GET: News/Details/5
         public async Task<IActionResult> Details(int? id)
         {
