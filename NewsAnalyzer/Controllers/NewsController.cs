@@ -169,11 +169,11 @@ namespace NewsAnalyzer.Controllers
 			foreach (var item in list)
 			{
 				var result = rss.Parse(item.Name, item.RSSLink, item.Category);
-				var lastNews =  await _context.News.Where(x => x.Portal == item).OrderByDescending(x=>x.PublishDate).Take(1).FirstOrDefaultAsync();
-				if(lastNews!=null)
-				{
-					result.Where(x => DateTime.Compare(x.PublishTime, lastNews.PublishDate) > 1).ToList();
-				}
+				//var lastNews =  await _context.News.Where(x => x.Portal == item).OrderByDescending(x=>x.PublishDate).Take(1).FirstOrDefaultAsync();
+				//if(lastNews!=null)
+				//{
+				//	result.Where(x => DateTime.Compare(x.PublishTime, lastNews.PublishDate) > 1).ToList();
+				//}
 				foreach (var element in result)
 				{
 					_context.News.Add(new News
