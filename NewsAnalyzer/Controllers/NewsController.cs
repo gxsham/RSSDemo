@@ -9,6 +9,7 @@ using NewsAnalyzer.Data;
 using NewsAnalyzer.Models;
 using Microsoft.AspNetCore.Authorization;
 using RSSReader;
+using System.Net.Http;
 
 namespace NewsAnalyzer.Controllers
 {
@@ -16,7 +17,6 @@ namespace NewsAnalyzer.Controllers
     public class NewsController : Controller
     {
         private readonly ApplicationDbContext _context;
-
         public NewsController(ApplicationDbContext context)
         {
             _context = context;    
@@ -170,6 +170,7 @@ namespace NewsAnalyzer.Controllers
 		{
 			RSSParser rss = new RSSParser();
 			Random rnd = new Random();
+			var client = new HttpClient();
 			var list = await _context.Portals.ToListAsync();
 			foreach (var item in list)
 			{
@@ -178,21 +179,27 @@ namespace NewsAnalyzer.Controllers
 				//if(lastNews!=null)
 				//{
 				//	result.Where(x => DateTime.Compare(x.PublishTime, lastNews.PublishDate) > 1).ToList();
-				//}
-				foreach (var element in result)
-				{
-					_context.News.Add(new News
+					var titleJson =  Newtonsoft.Json.JsonConvert.SerializeObject(result.Select(x => x.Title));
+					try
 					{
-						Title = element.Title,
-						Link = element.Link,
-						PublishDate = element.PublishTime,
-						Sentiment = rnd.Next(0, 100),
-						Portal = item
-					});
-				}
-				
-				await _context.SaveChangesAsync();
-			}
+						var response = await client.GetStringAsync($"http://13.79.234.96/evaluate/?sentence={titleJson}");
+						var token = Newtonsoft.Json.JsonConvert.DeserializeObject<List<double>>(response);
+						foreach (var element in result)
+						{
+							_context.News.Add(new News
+							{
+								Title = element.Title,
+								Link = element.Link,
+								PublishDate = element.PublishTime,
+								Sentiment = (int)token[result.IndexOf(element)],
+								Portal = item
+							});
+						}
+
+						await _context.SaveChangesAsync();
+					} catch { }
+				}	
+			//}
 			return RedirectToAction("Index");
 		}
     }

@@ -13,13 +13,9 @@
 @foreach (var item in Model)
 {
 		string color;
-		if (item.Sentiment < 40)
+		if (item.Sentiment == 0)
 		{
 			color = "panel panel-danger";
-		}
-		else if (item.Sentiment >= 40 && item.Sentiment <= 60)
-		{
-			color = "panel panel-warning";
 		}
 		else
 		{
