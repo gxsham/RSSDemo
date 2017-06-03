@@ -1,6 +1,81 @@
 @model IEnumerable<NewsAnalyzer.Models.News>
 
-@{
+<link href="~/css/theme-default.css" rel="stylesheet" />
+<br />
+<br />
+<br />
+<h1>News List</h1>
+<div class="jumbotron">
+	@{int i = 0; }
+	@{
+		string[] colorred = new string[] { "#1abc9c" };
+		string[] colorgreen = new string[] { "#e74c3c" };
+		Random r = new Random();
+		string col = null;
+		string stare = null;
+	}
+	@foreach (var item in Model)
+	{
+		if (item.Sentiment == 0) { col = colorred[r.Next(0, colorred.Length)]; stare = "Negativ"; }
+		else { col = colorgreen[r.Next(0, colorgreen.Length)]; stare = "Pozitiv"; }
+		@if (i == 1)
+		{
+			<script>
+				document.write(" <div class='row'>");
+			</script>
+		}
+		else if (i == 3)
+		{
+			<script>document.write("</div>");</script>
+			i = 0;
+		}
+		{
+			<div class="col-md-4">
+				<a href=@item.Link class="tile" style="background:@col">
+					@item.Title
+				<p>@stare</p>
+				<div class="informer informer-warning"><span class="fa fa-caret-down"></span></div>
+				<div class="informer informer-default dir-tr">@item.PublishDate</div>
+				<div class="informer informer-default">@item.Portal.Name</div>
+				@*<div class="informer informer-default push-down-25">@item.Link</div>*@
+			</a>
+			@if (User.Identity.IsAuthenticated)
+			{
+				<div class="panel-body">
+					<a class="text-muted" asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+					<a class="text-muted" asp-action="Details" asp-route-id="@item.Id">Details</a> |
+					<a class="text-muted" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+				</div>}
+
+		</div>
+		}
+
+
+		i++;
+	}
+
+</div>
+<ul class="pagination pagination-lg">
+	<li class="disabled"><a href="#">&laquo;</a></li>
+	<li class="active"><a href="#">1</a></li>
+	<li><a href="#">2</a></li>
+	<li><a href="#">3</a></li>
+	<li><a href="#">&raquo;</a></li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+@*@{
 	ViewData["Title"] = "Index";
 }
 
@@ -48,4 +123,4 @@
 	<li><a href="#">2</a></li>
 	<li><a href="#">3</a></li>
 	<li><a href="#">&raquo;</a></li>
-</ul>
+</ul>*@

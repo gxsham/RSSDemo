@@ -81,7 +81,7 @@ namespace NewsAnalyzer
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=News}/{action=LandingPage}/{id?}");
+                    template: "{controller=News}/{action=StartingPage}/{id?}");
             });
         }
     }

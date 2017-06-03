@@ -1,0 +1,50 @@
+@model IEnumerable<NewsAnalyzer.Models.NewsViewModels.CompareViewModel>
+
+@{
+    ViewData["Title"] = "Compare";
+}
+
+<h2>Compare</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                 @Html.DisplayNameFor(model => model.Value)
+            </th>
+			<th>
+				Sentiment
+			</th>
+			<th>
+				Portal
+			</th>
+			<th>
+				Date
+			</th>
+			<th>
+				Title
+			</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.CheckBoxFor(modelItem => item.Value)
+            </td>
+			<td>
+				@Html.DisplayFor(modelItem => item.News.Sentiment)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.News.Portal.Name)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.News.PublishDate)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.News.Title)
+			</td>
+        </tr>
+}
+    </tbody>
+</table>

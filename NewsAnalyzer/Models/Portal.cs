@@ -16,6 +16,10 @@ namespace NewsAnalyzer.Models
 		public string RSSLink { get; set;}
 		public string Category { get; set; }
 		public ICollection<News> News { get; set; }
+		public Portal()
+		{
+			News = new List<News>();
+		}
 		
     }
 }

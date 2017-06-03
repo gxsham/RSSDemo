@@ -10,6 +10,8 @@ using NewsAnalyzer.Models;
 using Microsoft.AspNetCore.Authorization;
 using RSSReader;
 using System.Net.Http;
+using NewsAnalyzer.Models.NewsViewModels;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace NewsAnalyzer.Controllers
 {
@@ -24,16 +26,27 @@ namespace NewsAnalyzer.Controllers
 
         // GET: News
 		[AllowAnonymous]
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int page)
         {
-            var applicationDbContext = _context.News.OrderByDescending(x=>x.PublishDate).Take(15).Include(n => n.Portal);
-            return View(await applicationDbContext.ToListAsync());
+            var newsList = _context.News.OrderByDescending(x=>x.PublishDate).Skip(page*30).Take(30).Include(x=>x.Portal);
+            return View(await newsList.ToListAsync());
         }
-
+		
 		[AllowAnonymous]
-		public ActionResult LandingPage()
+		public ActionResult StartingPage()
 		{
-			return View();
+			var portalList = _context.Portals;
+			var result = new List<StartPageViewModel>();
+			foreach (var item in portalList)
+			{
+				var resultingElement = new StartPageViewModel();
+				resultingElement.PortalName = item.Name;
+				resultingElement.NegativeCount = _context.News.Count(x=>x.Portal == item && x.Sentiment == 0);
+				resultingElement.PositiveCount = _context.News.Count(x => x.Portal == item && x.Sentiment == 1);
+				if(resultingElement.PositiveCount!=0 || resultingElement.NegativeCount!=0)
+					result.Add(resultingElement);
+			}
+			return View(result);
 		}
         // GET: News/Details/5
         public async Task<IActionResult> Details(int? id)
@@ -198,9 +211,22 @@ namespace NewsAnalyzer.Controllers
 
 						await _context.SaveChangesAsync();
 					} catch { }
-				}	
+				}
 			//}
 			return RedirectToAction("Index");
+
+	}
+		[AllowAnonymous]
+		[HttpGet]
+		public  ViewResult Compare(int page)
+		{
+			var newsList =  _context.News.OrderByDescending(x => x.PublishDate).Skip(page*30).Take(30).Include(x => x.Portal);
+			var list = new List<CompareViewModel>();
+			foreach (var item in newsList)
+			{
+				list.Add(new CompareViewModel { News = item, Value = false});
+			}
+			return View(list);
 		}
-    }
+	}
 }

@@ -1,0 +1,39 @@
+@model IList<NewsAnalyzer.Models.NewsViewModels.StartPageViewModel>
+
+@{int i = 1;
+	string g = "g";}
+<script type="text/javascript">
+function Grafic(id,x1,x2,x3) {
+	var chart = new CanvasJS.Chart("g" + id,
+	{
+		theme: "theme1",
+		title:{
+			text: x3
+		},
+		data: [
+		{
+			type: "pie",
+			showInLegend: true,
+			toolTipContent: "{y} - #percent %",
+			yValueFormatString: "#0.# News",
+			legendText: "{indexLabel}",
+			dataPoints: [
+				{  y: x2, indexLabel: "Pozitiv" },
+				{  y: x1, indexLabel: "Negativ" },
+
+			]
+		}
+		]
+	});
+	chart.render();
+}
+</script>
+<script src="~/js/canvasjs.min.js"></script>
+@foreach (var item in Model)
+{
+
+	<div id=@g@i style="height: 250px; width: 250px; display:inline-block; margin-right:3em; margin-left:3em;"></div>
+	<script>Grafic(@i,@item.NegativeCount,@item.PositiveCount,"@item.PortalName")</script>
+	i++;
+}
+
