@@ -1,0 +1,6 @@
+C:\Users\gxsha\onedrive\documents\visual studio 2017\Projects\RSSReader\DAL\bin\Debug\netcoreapp1.1\DAL.deps.json
+C:\Users\gxsha\onedrive\documents\visual studio 2017\Projects\RSSReader\DAL\bin\Debug\netcoreapp1.1\DAL.dll
+C:\Users\gxsha\onedrive\documents\visual studio 2017\Projects\RSSReader\DAL\bin\Debug\netcoreapp1.1\DAL.pdb
+C:\Users\gxsha\onedrive\documents\visual studio 2017\Projects\RSSReader\DAL\obj\Debug\netcoreapp1.1\DAL.AssemblyInfo.cs
+C:\Users\gxsha\onedrive\documents\visual studio 2017\Projects\RSSReader\DAL\obj\Debug\netcoreapp1.1\DAL.dll
+C:\Users\gxsha\onedrive\documents\visual studio 2017\Projects\RSSReader\DAL\obj\Debug\netcoreapp1.1\DAL.pdb

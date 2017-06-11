@@ -1,16 +1,29 @@
-@model IEnumerable<NewsAnalyzer.Models.NewsViewModels.CompareViewModel>
+@model IList<NewsAnalyzer.Models.NewsViewModels.CompareViewModel>
 
 @{
     ViewData["Title"] = "Compare";
 }
 
-<h2>Compare</h2>
+<link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
 
+<style>
+	#chartdiv {
+		width: 100%;
+		height: 300px;
+	}
+</style>
+<h2>Compare</h2>
+	<div id="chartdiv">
+		
+	</div>
+<br />
+
+<input value="Search" class="form-control"/>
 <table class="table">
     <thead>
         <tr>
             <th>
-                 @Html.DisplayNameFor(model => model.Value)
+                 
             </th>
 			<th>
 				Sentiment
@@ -27,24 +40,35 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+@for(int i = 0; i < Model.Count(); i++) {
         <tr>
             <td>
-                @Html.CheckBoxFor(modelItem => item.Value)
+                @Html.CheckBoxFor(modelItem => Model[i].Value, new { id = "check_"+i })
             </td>
 			<td>
-				@Html.DisplayFor(modelItem => item.News.Sentiment)
+				<label id="sentiment_@i">@Model[i].News.Sentiment</label>
 			</td>
 			<td>
-				@Html.DisplayFor(modelItem => item.News.Portal.Name)
+				<label id="portal_@i">@Model[i].News.Portal.Name</label>
 			</td>
 			<td>
-				@Html.DisplayFor(modelItem => item.News.PublishDate)
+				@Html.DisplayFor(modelItem => Model[i].News.PublishDate)
 			</td>
 			<td>
-				@Html.DisplayFor(modelItem => item.News.Title)
+				@Html.DisplayFor(modelItem => Model[i].News.Title)
 			</td>
         </tr>
 }
     </tbody>
 </table>
+
+@section Scripts{
+<script src="~/js/amch.js"></script>
+<script src="https://www.amcharts.com/lib/3/serial.js"></script>
+<script src="~/lib/amcharts3-export/libs/fabric.js/fabric.min.js"></script>
+<script src="~/lib/amcharts3-export/libs/pdfmake/pdfmake.min.js"></script>
+<script src="~/lib/amcharts3-export/export.min.js"></script>
+
+<script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
+<script src="~/js/scr.js"></script>
+}

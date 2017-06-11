@@ -1,0 +1,6 @@
+C:\Users\gxsha\onedrive\documents\visual studio 2017\Projects\RSSReader\RepositoryIterfaces\bin\Debug\netcoreapp1.1\Repository.Interfaces.deps.json
+C:\Users\gxsha\onedrive\documents\visual studio 2017\Projects\RSSReader\RepositoryIterfaces\bin\Debug\netcoreapp1.1\Repository.Interfaces.dll
+C:\Users\gxsha\onedrive\documents\visual studio 2017\Projects\RSSReader\RepositoryIterfaces\bin\Debug\netcoreapp1.1\Repository.Interfaces.pdb
+C:\Users\gxsha\onedrive\documents\visual studio 2017\Projects\RSSReader\RepositoryIterfaces\obj\Debug\netcoreapp1.1\Repository.Interfaces.AssemblyInfo.cs
+C:\Users\gxsha\onedrive\documents\visual studio 2017\Projects\RSSReader\RepositoryIterfaces\obj\Debug\netcoreapp1.1\Repository.Interfaces.dll
+C:\Users\gxsha\onedrive\documents\visual studio 2017\Projects\RSSReader\RepositoryIterfaces\obj\Debug\netcoreapp1.1\Repository.Interfaces.pdb

@@ -6,7 +6,7 @@ C:\Users\gxsha\onedrive\documents\visual studio 2017\Projects\RSSReader\NewsAnal
 C:\Users\gxsha\onedrive\documents\visual studio 2017\Projects\RSSReader\NewsAnalyzer\bin\Debug\netcoreapp1.1\RSSReader.dll
 C:\Users\gxsha\onedrive\documents\visual studio 2017\Projects\RSSReader\NewsAnalyzer\bin\Debug\netcoreapp1.1\RSSReader.pdb
 C:\Users\gxsha\onedrive\documents\visual studio 2017\Projects\RSSReader\NewsAnalyzer\obj\Debug\netcoreapp1.1\NewsAnalyzer.csprojResolveAssemblyReference.cache
+C:\Users\gxsha\onedrive\documents\visual studio 2017\Projects\RSSReader\NewsAnalyzer\obj\Debug\netcoreapp1.1\UserSecretsAssemblyInfo.cs
 C:\Users\gxsha\onedrive\documents\visual studio 2017\Projects\RSSReader\NewsAnalyzer\obj\Debug\netcoreapp1.1\NewsAnalyzer.AssemblyInfo.cs
 C:\Users\gxsha\onedrive\documents\visual studio 2017\Projects\RSSReader\NewsAnalyzer\obj\Debug\netcoreapp1.1\NewsAnalyzer.dll
 C:\Users\gxsha\onedrive\documents\visual studio 2017\Projects\RSSReader\NewsAnalyzer\obj\Debug\netcoreapp1.1\NewsAnalyzer.pdb
-C:\Users\gxsha\onedrive\documents\visual studio 2017\Projects\RSSReader\NewsAnalyzer\obj\Debug\netcoreapp1.1\UserSecretsAssemblyInfo.cs

@@ -28,6 +28,20 @@ namespace NewsAnalyzer.Controllers
 		[AllowAnonymous]
         public async Task<IActionResult> Index(int page)
         {
+			if (page < 0)
+			{
+				page = 0;
+			}
+			else
+			{
+				int totalNews = _context.News.Count();
+				int totalPages = (int)Math.Ceiling((double)totalNews / 30);
+				if (page >= totalPages)
+				{
+					page = totalPages - 1;
+				}
+			}
+			ViewData["page"] = page;
             var newsList = _context.News.OrderByDescending(x=>x.PublishDate).Skip(page*30).Take(30).Include(x=>x.Portal);
             return View(await newsList.ToListAsync());
         }

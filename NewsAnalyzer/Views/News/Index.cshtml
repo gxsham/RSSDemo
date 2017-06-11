@@ -5,11 +5,11 @@
 <br />
 <br />
 <h1>News List</h1>
-<div class="jumbotron">
+
 	@{int i = 0; }
 	@{
-		string[] colorred = new string[] { "#1abc9c" };
-		string[] colorgreen = new string[] { "#e74c3c" };
+		string[] colorred = new string[] { "#e74c3c" };
+		string[] colorgreen = new string[] { "#1abc9c" };
 		Random r = new Random();
 		string col = null;
 		string stare = null;
@@ -30,10 +30,10 @@
 			i = 0;
 		}
 		{
-			<div class="col-md-4">
-				<a href=@item.Link class="tile" style="background:@col">
+			<div class="col-md-4" style="padding:0;">
+				<a href=@item.Link class="tile" style="background:@col; font-size:15px; padding-top:30px; margin:0 !important; height:130px">
 					@item.Title
-				<p>@stare</p>
+				<p style="position:absolute; width: 100%; text-align:center; bottom: 0;">@stare</p>
 				<div class="informer informer-warning"><span class="fa fa-caret-down"></span></div>
 				<div class="informer informer-default dir-tr">@item.PublishDate</div>
 				<div class="informer informer-default">@item.Portal.Name</div>
@@ -54,13 +54,9 @@
 		i++;
 	}
 
-</div>
-<ul class="pagination pagination-lg">
-	<li class="disabled"><a href="#">&laquo;</a></li>
-	<li class="active"><a href="#">1</a></li>
-	<li><a href="#">2</a></li>
-	<li><a href="#">3</a></li>
-	<li><a href="#">&raquo;</a></li>
+<ul class="pagination pagination-lg" >
+	<li ><a href="?page=@(((int)ViewData["page"]) - 1)">&laquo;</a></li>
+	<li><a href="?page=@(((int)ViewData["page"]) + 1)">&raquo;</a></li>
 </ul>
 
 

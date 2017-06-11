@@ -13,6 +13,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Include="wwwroot\js\amch.js" />
+    <Content Include="wwwroot\js\scr.js" />
     <Content Include="wwwroot\lib\bootstrap\dist\css\yetiBootstrap.css" />
     <Content Include="wwwroot\lib\bootstrap\dist\css\yetiBootstrap.min.css" />
   </ItemGroup>
